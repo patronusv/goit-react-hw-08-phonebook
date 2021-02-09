@@ -1,8 +1,10 @@
+import HomePageWrapper from './HomePageStyled';
+
 const HomePage = () => {
   return (
-    <div>
-      <h2>HomePage</h2>
-    </div>
+    <HomePageWrapper>
+      <h2 className="page-title">Home Page</h2>
+    </HomePageWrapper>
   );
 };
 

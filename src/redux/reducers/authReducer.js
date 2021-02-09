@@ -1,15 +1,11 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import {
-  signUpRequest,
   signUpSuccess,
   signUpError,
-  signInRequest,
   signInSuccess,
   signInError,
-  logOutRequest,
   logOutSuccess,
   logOutError,
-  getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
 } from '../actions/authActions';

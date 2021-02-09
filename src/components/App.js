@@ -16,12 +16,14 @@ const App = () => {
       return;
     }
     dispatch(getUserOperation());
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (!isAuthenticated) {
       history.replace('/login');
       return;
     }
+    // eslint-disable-next-line
   }, [isAuthenticated]);
   return (
     <>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signUpOperation } from '../redux/operations/authOperations';
+import SignUpWrapper from './SignUpPageStyled';
 
 const initialState = {
   name: '',
@@ -23,15 +24,53 @@ const SignUpPage = () => {
   };
   const { name, email, password } = state;
   return (
-    <div>
-      <h2>SignUpPage</h2>
+    <SignUpWrapper>
+      <h2 className="page-title">Sign Up</h2>
       <form onSubmit={onHandleSubmit}>
-        <input type="text" autoComplete="off" autoFocus placeholder="Enter name" onChange={onHandleChange} value={name} name="name" />
-        <input type="text" autoComplete="off" autoFocus placeholder="Enter email" onChange={onHandleChange} value={email} name="email" />
-        <input type="password" autoComplete="off" autoFocus placeholder="Enter password" onChange={onHandleChange} value={password} name="password" />
-        <button type="submit">Sign Up</button>
+        <label className="form-label">
+          Name:
+          <input
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Enter name"
+            onChange={onHandleChange}
+            value={name}
+            name="name"
+            className="form-input"
+          />
+        </label>
+        <label className="form-label">
+          Email:
+          <input
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Enter email"
+            onChange={onHandleChange}
+            value={email}
+            name="email"
+            className="form-input"
+          />
+        </label>
+        <label className="form-label">
+          Password:
+          <input
+            type="password"
+            autoComplete="off"
+            autoFocus
+            placeholder="Enter password"
+            onChange={onHandleChange}
+            value={password}
+            name="password"
+            className="form-input"
+          />
+        </label>
+        <button type="submit" className="form-button">
+          Sign Up
+        </button>
       </form>
-    </div>
+    </SignUpWrapper>
   );
 };
 
