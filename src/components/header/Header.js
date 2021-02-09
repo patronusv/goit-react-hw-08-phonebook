@@ -11,11 +11,28 @@ const Header = () => {
 
   return (
     <HeaderStyled>
-      {mainRoutes.map(({ path, name, exact }) => (
+      {isAuthenticated
+        ? mainRoutes.map(
+            route =>
+              !route.restricted && (
+                <NavLink to={route.path} key={route.name} exact={route.exact} className="navlink" activeClassName="navlink-active">
+                  {route.name}
+                </NavLink>
+              ),
+          )
+        : mainRoutes.map(
+            route =>
+              !route.private && (
+                <NavLink to={route.path} key={route.name} exact={route.exact} className="navlink" activeClassName="navlink-active">
+                  {route.name}
+                </NavLink>
+              ),
+          )}
+      {/* {mainRoutes.map(({ path, name, exact }) => (
         <NavLink to={path} key={name} exact={exact} className="navlink" activeClassName="navlink-active">
           {name}
         </NavLink>
-      ))}
+      ))} */}
       {isAuthenticated && <LogOutMenu />}
     </HeaderStyled>
   );
