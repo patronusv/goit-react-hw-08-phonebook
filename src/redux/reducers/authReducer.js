@@ -19,7 +19,7 @@ const initialState = { name: '', email: '' };
 const userReducer = createReducer(initialState, {
   [signUpSuccess]: (_, { payload }) => payload.user,
   [signInSuccess]: (_, { payload }) => payload.user,
-  [getCurrentUserSuccess]: (_, { payload }) => payload.user,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
   [logOutSuccess]: () => initialState,
 });
 const tokenReducer = createReducer(null, {

@@ -1,12 +1,11 @@
-// import { createStore } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-// import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore } from 'redux-persist';
 import rootReducer from './reducers/rootReducer';
-
-// const store = createStore(rootReducer, composeWithDevTools());
 
 const store = configureStore({
   reducer: rootReducer,
 });
 
 export default store;
+
+export const persistor = persistStore(store);

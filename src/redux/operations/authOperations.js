@@ -55,3 +55,17 @@ export const logOutOperation = () => async dispatch => {
     dispatch(logOutError(error));
   }
 };
+export const getUserOperation = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistToken },
+  } = getState();
+  if (!persistToken) return;
+  token.set(persistToken);
+  dispatch(getCurrentUserRequest());
+  try {
+    const response = await axios.get(`/users/current`);
+    dispatch(getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(getCurrentUserError(error));
+  }
+};
