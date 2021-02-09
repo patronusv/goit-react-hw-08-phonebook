@@ -11,11 +11,14 @@ import {
   getContactsError,
 } from '../actions/phonebookActions';
 
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+
 export const operationAddContact = contact => async dispatch => {
   dispatch(addContactRequest());
   try {
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/contacts.json`, contact);
-    dispatch(addContactSuccess({ ...contact, id: response.data.name }));
+    const response = await axios.post(`/contacts`, contact);
+    console.log('response', response);
+    dispatch(addContactSuccess(response.data));
   } catch (error) {
     dispatch(addContactError(error));
   }
@@ -24,7 +27,7 @@ export const operationAddContact = contact => async dispatch => {
 export const operationGetContacts = () => async dispatch => {
   dispatch(getContactsRequest());
   try {
-    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/contacts.json`);
+    const response = await axios.get(`/contacts`);
     if (response.data) {
       const contacts = Object.keys(response.data).map(key => ({
         ...response.data[key],
@@ -41,7 +44,7 @@ export const operationGetContacts = () => async dispatch => {
 export const operationDeleteContact = id => async dispatch => {
   dispatch(deleteContactRequest());
   try {
-    await axios.delete(`${process.env.REACT_APP_BASE_URL}/contacts/${id}.json`);
+    await axios.delete(`/contacts/${id}`);
     dispatch(deleteContactSuccess(id));
   } catch (error) {
     dispatch(deleteContactError(error));
