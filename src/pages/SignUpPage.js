@@ -18,7 +18,6 @@ const SignUpPage = () => {
   };
   const onHandleSubmit = e => {
     e.preventDefault();
-    console.log('state', state);
     dispatch(signUpOperation(state));
     setState(initialState);
   };

@@ -17,7 +17,6 @@ const SignInPage = () => {
   };
   const onHandleSubmit = e => {
     e.preventDefault();
-    console.log('state', state);
     dispatch(signInOperation(state));
     setState(initialState);
   };

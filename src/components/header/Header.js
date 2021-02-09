@@ -28,11 +28,6 @@ const Header = () => {
                 </NavLink>
               ),
           )}
-      {/* {mainRoutes.map(({ path, name, exact }) => (
-        <NavLink to={path} key={name} exact={exact} className="navlink" activeClassName="navlink-active">
-          {name}
-        </NavLink>
-      ))} */}
       {isAuthenticated && <LogOutMenu />}
     </HeaderStyled>
   );
